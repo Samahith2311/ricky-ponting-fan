@@ -1,0 +1,177 @@
+{
+  "retrieved": "2026-11-12",
+  "honours": [
+    {
+      "id": "sobers-trophy",
+      "category": "ICC awards",
+      "title": "Sir Garfield Sobers Trophy",
+      "subtitle": "ICC Men's Cricketer of the Year",
+      "when": "2006, 2007",
+      "note": "Winner in back-to-back years.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "icc-test-cricketer",
+      "category": "ICC awards",
+      "title": "ICC Men's Test Cricketer of the Year",
+      "subtitle": "",
+      "when": "2006",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "icc-test-team",
+      "category": "ICC awards",
+      "title": "ICC Men's Test Team of the Year",
+      "subtitle": "",
+      "when": "2004, 2005, 2006, 2007",
+      "note": "Named captain of the side in 2004, 2005 and 2007.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "icc-odi-team",
+      "category": "ICC awards",
+      "title": "ICC Men's ODI Team of the Year",
+      "subtitle": "",
+      "when": "2004, 2006, 2007, 2008, 2010",
+      "note": "Named captain of the side in 2004, 2007, 2008 and 2010.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "icc-hall-of-fame",
+      "category": "Hall of Fame",
+      "title": "ICC Cricket Hall of Fame",
+      "subtitle": "",
+      "when": "2018",
+      "note": "Inducted in July 2018.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting",
+      "verified": true
+    },
+    {
+      "id": "australian-cricket-hall-of-fame",
+      "category": "Hall of Fame",
+      "title": "Australian Cricket Hall of Fame",
+      "subtitle": "",
+      "when": "2018",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Australian_Cricket_Hall_of_Fame",
+      "verified": true
+    },
+    {
+      "id": "sport-australia-hall-of-fame",
+      "category": "Hall of Fame",
+      "title": "Sport Australia Hall of Fame",
+      "subtitle": "",
+      "when": "",
+      "note": "Inductee. The year is not recorded here because it was not confirmed against a source.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#External_links",
+      "verified": true
+    },
+    {
+      "id": "allan-border-medal",
+      "category": "Honours",
+      "title": "Allan Border Medal",
+      "subtitle": "Australian cricketer of the year",
+      "when": "2004, 2006, 2007, 2009",
+      "note": "A record four medals. The 2009 medal was shared with Michael Clarke.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "wisden-leading-cricketer",
+      "category": "Honours",
+      "title": "Wisden Leading Cricketer in the World",
+      "subtitle": "",
+      "when": "2003",
+      "note": "",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "wisden-cricketer-of-the-year",
+      "category": "Honours",
+      "title": "Wisden Cricketer of the Year",
+      "subtitle": "",
+      "when": "2006",
+      "note": "One of the five named in the 2006 almanack.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "player-of-the-decade",
+      "category": "Honours",
+      "title": "Player of the Decade",
+      "subtitle": "ESPNcricinfo, 2000 to 2009",
+      "when": "2010",
+      "note": "Voted Player of the Decade, announced in January 2010.",
+      "source": "https://www.espncricinfo.com/decadereview2009/content/story/443957.html",
+      "verified": true
+    },
+    {
+      "id": "order-of-australia",
+      "category": "Honours",
+      "title": "Officer of the Order of Australia",
+      "subtitle": "AO",
+      "when": "2012",
+      "note": "Appointed on Australia Day 2012 for services to cricket and, through the Ponting Foundation, the community.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#2012:_Test_retirement",
+      "verified": true
+    },
+    {
+      "id": "compton-miller-medal",
+      "category": "Honours",
+      "title": "Compton–Miller Medal",
+      "subtitle": "Ashes player of the series",
+      "when": "2006–07",
+      "note": "Awarded for the home Ashes that Australia won without losing a Test.",
+      "source": "https://en.wikipedia.org/wiki/Compton%E2%80%93Miller_Medal",
+      "verified": true
+    },
+    {
+      "id": "sheffield-shield-player-of-the-year",
+      "category": "Honours",
+      "title": "Sheffield Shield Player of the Year",
+      "subtitle": "",
+      "when": "2012–13",
+      "note": "In his last season for Tasmania.",
+      "source": "https://www.espncricinfo.com/story/ricky-ponting-named-sheffield-shield-player-of-the-year-625846",
+      "verified": true
+    },
+    {
+      "id": "highest-score-in-defeat",
+      "category": "Records",
+      "title": "Highest Test score in a losing cause",
+      "subtitle": "Against India, Adelaide, December 2003",
+      "when": "2003",
+      "value": "242",
+      "note": "No batter has made more in a Test his side went on to lose.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "odi-hundreds-all-test-nations",
+      "category": "Records",
+      "title": "ODI hundreds against every Test nation",
+      "subtitle": "First batter to do it",
+      "when": "",
+      "note": "Counts the Test-playing nations of his era. Afghanistan and Ireland were given Test status after he retired.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "champions-trophy-partnership",
+      "category": "Records",
+      "title": "Highest partnership in the Champions Trophy",
+      "subtitle": "With Shane Watson, second wicket, against England at Centurion",
+      "when": "2009",
+      "value": "252*",
+      "note": "Unbroken stand on 2 October 2009. Still the tournament record for any wicket.",
+      "source": "https://stats.espncricinfo.com/ci/engine/records/fow/highest_partnerships_for_any_wicket.html?id=44;type=trophy",
+      "verified": true
+    }
+  ]
+}

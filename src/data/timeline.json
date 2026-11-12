@@ -1,0 +1,227 @@
+{
+  "retrieved": "2026-11-12",
+  "events": [
+    {
+      "id": "born",
+      "date": "1974-12-19",
+      "title": "Born in Launceston",
+      "text": "Born in Launceston, Tasmania.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting",
+      "verified": true
+    },
+    {
+      "id": "first-class-debut",
+      "date": "1992-11",
+      "title": "Tasmania debut at 17",
+      "text": "First-class debut for Tasmania aged 17 years and 337 days, the youngest Tasmanian to play in the Sheffield Shield.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Early_Australian_domestic_career",
+      "verified": true
+    },
+    {
+      "id": "odi-debut",
+      "date": "1995-02-15",
+      "title": "ODI debut",
+      "text": "First one-day international, against South Africa in a four-team tournament in New Zealand.",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting",
+      "verified": true
+    },
+    {
+      "id": "test-debut",
+      "date": "1995-12-08",
+      "title": "Test debut",
+      "text": "First Test, against Sri Lanka.",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting",
+      "verified": true
+    },
+    {
+      "id": "world-cup-hundred-1996",
+      "date": "1996",
+      "title": "World Cup hundred in Jaipur",
+      "text": "A century against the West Indies makes him, at the time, the youngest batter to score a World Cup hundred.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#1996_World_Cup",
+      "verified": true
+    },
+    {
+      "id": "world-cup-1999",
+      "date": "1999",
+      "title": "First World Cup",
+      "text": "A World Cup winner for the first time, as a player.",
+      "major": true,
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting;view=series",
+      "verified": true
+    },
+    {
+      "id": "odi-captain",
+      "date": "2002",
+      "title": "One-day captain",
+      "text": "Takes over the captaincy of the one-day side.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Appointment_as_One_Day_International_captain",
+      "verified": true
+    },
+    {
+      "id": "world-cup-2003",
+      "date": "2003",
+      "title": "World Cup won as captain",
+      "text": "Australia win every match of the tournament. Ponting makes an unbeaten hundred in the final against India.",
+      "href": "/innings/2003-world-cup-final",
+      "major": true,
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting;view=series",
+      "verified": true
+    },
+    {
+      "id": "test-captain",
+      "date": "2004",
+      "title": "Test captain",
+      "text": "Succeeds Steve Waugh as Australia's Test captain.",
+      "major": true,
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "ashes-2005",
+      "date": "2005",
+      "title": "The Ashes lost in England",
+      "text": "Australia lose an Ashes series for the first time since 1987.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Australia_lose_an_Ashes_series_for_the_first_time_since_1987",
+      "verified": true
+    },
+    {
+      "id": "champions-trophy-2006",
+      "date": "2006",
+      "title": "Champions Trophy",
+      "text": "Australia win the Champions Trophy for the first time, in India.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Australia's_first_Champions_Trophy_victory",
+      "verified": true
+    },
+    {
+      "id": "ashes-2006-07",
+      "date": "2006-11",
+      "title": "The Ashes regained",
+      "text": "A clean sweep at home. Ponting is player of the series and wins the Compton–Miller Medal.",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Compton%E2%80%93Miller_Medal",
+      "verified": true
+    },
+    {
+      "id": "world-cup-2007",
+      "date": "2007",
+      "title": "Second World Cup as captain",
+      "text": "Unbeaten through the tournament again, this time in the West Indies. He is the ICC's Cricketer of the Year for the second year running.",
+      "major": true,
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting;view=series",
+      "verified": true
+    },
+    {
+      "id": "t20i-retirement",
+      "date": "2009-09-07",
+      "title": "Steps away from T20 internationals",
+      "text": "Retires from Twenty20 internationals to prolong his career in the longer formats.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Second_Ashes_series_loss_as_captain",
+      "verified": true
+    },
+    {
+      "id": "captaincy-ends",
+      "date": "2011",
+      "title": "Hands over the captaincy",
+      "text": "Resigns as captain after the World Cup and plays on under Michael Clarke.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#2011_World_Cup_and_resignation_as_captain",
+      "verified": true
+    },
+    {
+      "id": "order-of-australia",
+      "date": "2012-01-26",
+      "title": "Officer of the Order of Australia",
+      "text": "Appointed on Australia Day for services to cricket and, through the Ponting Foundation, the community.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#2012:_Test_retirement",
+      "verified": true
+    },
+    {
+      "id": "last-test",
+      "date": "2012-12-03",
+      "title": "Last Test",
+      "text": "Announces his retirement on 29 November and plays his final Test against South Africa in Perth.",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#2012:_Test_retirement",
+      "verified": true
+    },
+    {
+      "id": "last-season",
+      "date": "2013",
+      "title": "Last season as a player",
+      "text": "Captains Mumbai Indians in the IPL, plays county cricket for Surrey, and is named Sheffield Shield Player of the Year for 2012–13.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Records_and_achievements",
+      "verified": true
+    },
+    {
+      "id": "mumbai-coach",
+      "date": "2014-12",
+      "title": "Head coach, Mumbai Indians",
+      "text": "Named head coach in December 2014. Mumbai win the IPL the following season.",
+      "href": "/ipl",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    },
+    {
+      "id": "delhi-coach",
+      "date": "2018-01-03",
+      "title": "Head coach, Delhi",
+      "text": "Appointed by Delhi Daredevils, who become Delhi Capitals the next year.",
+      "href": "/ipl",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    },
+    {
+      "id": "hall-of-fame",
+      "date": "2018-07",
+      "title": "ICC Hall of Fame",
+      "text": "Inducted into the ICC Cricket Hall of Fame. The Australian Cricket Hall of Fame follows in the same year.",
+      "href": "/records",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting",
+      "verified": true
+    },
+    {
+      "id": "delhi-final",
+      "date": "2020",
+      "title": "Delhi reach the IPL final",
+      "text": "Delhi Capitals finish as runners-up, their first final.",
+      "href": "/ipl",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons",
+      "verified": true
+    },
+    {
+      "id": "washington-freedom",
+      "date": "2024-02-06",
+      "title": "Head coach, Washington Freedom",
+      "text": "Appointed for the second season of Major League Cricket. The side wins the title that year.",
+      "major": false,
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    },
+    {
+      "id": "punjab-coach",
+      "date": "2024-09",
+      "title": "Head coach, Punjab Kings",
+      "text": "Appointed in September 2024. In his first season Punjab top the league table and reach the final.",
+      "href": "/ipl",
+      "major": true,
+      "source": "https://en.wikipedia.org/wiki/Punjab_Kings#Performance_record",
+      "verified": true
+    }
+  ]
+}

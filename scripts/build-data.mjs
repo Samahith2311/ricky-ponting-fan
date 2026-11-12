@@ -110,8 +110,11 @@ async function format(id, label, query) {
   return data;
 }
 
-async function captainRecord(formatId, cls) {
-  const source = player(PONTING, `captain=1;class=${cls};filter=advanced;orderby=default;template=results;type=batting`);
+async function captainRecord(formatId, cls, filter = "") {
+  const source = player(
+    PONTING,
+    `captain=1;class=${cls};filter=advanced;orderby=default;template=results;${filter}type=batting`,
+  );
   const { tables } = await load(source);
   const total = overall(tables);
   // A result with no row on the page means no such match.
@@ -174,6 +177,35 @@ async function seriesList(cls, filter, captionWanted) {
   });
 }
 
+// Where Ponting sits on Statsguru's all-time lists. `key` is the column the list is sorted by.
+const RANKINGS = [
+  { id: "test-wins-player", title: "Test wins as a player", measure: "Wins", key: "Mat", query: "class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting" },
+  { id: "odi-wins-captain", title: "ODI wins as captain", measure: "Wins", key: "Mat", query: "class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;type=batting" },
+  { id: "world-cup-wins-captain", title: "World Cup wins as captain", measure: "Wins", key: "Mat", query: "class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;trophy=12;type=batting" },
+  { id: "international-hundreds", title: "International hundreds", measure: "Hundreds", key: "100s", query: "class=11;orderby=hundreds;template=results;type=batting" },
+  { id: "test-runs", title: "Test runs", measure: "Runs", key: "Runs", query: "class=1;template=results;type=batting" },
+  { id: "international-runs", title: "International runs", measure: "Runs", key: "Runs", query: "class=11;template=results;type=batting" },
+  { id: "odi-runs", title: "ODI runs", measure: "Runs", key: "Runs", query: "class=2;template=results;type=batting" },
+];
+
+async function ranking({ id, title, measure, key, query }) {
+  const source = `${BASE}/stats/index.html?${query}`;
+  const rows = (await load(source)).tables["Overall figures"];
+  const values = rows.map((r) => num(r[key]));
+  if (values.some((v, i) => i > 0 && v > values[i - 1])) throw new Error(`${id}: list is not sorted by ${key}`);
+  const index = rows.findIndex((r) => r.Player.startsWith("RT Ponting"));
+  if (index < 0) throw new Error(`${id}: Ponting is not on the first page of ${source}`);
+  // Top three, extended down to Ponting when he is lower.
+  const leaders = rows.slice(0, Math.max(3, index + 1)).map((r, i) => ({
+    rank: i + 1,
+    player: r.Player.replace(/\s*\(.*\)$/, ""),
+    value: values[i],
+    source,
+    verified: true,
+  }));
+  return { id, title, measure, rank: index + 1, value: values[index], leaders, source, verified: true };
+}
+
 const COMPARE = [
   { id: "ponting", name: "Ricky Ponting", country: "Australia", sg: PONTING },
   { id: "tendulkar", name: "Sachin Tendulkar", country: "India", sg: 35320 },
@@ -224,10 +256,15 @@ write("career-summary.json", {
 write("captaincy.json", {
   retrieved,
   record: [await captainRecord("test", 1), await captainRecord("odi", 2), await captainRecord("t20i", 3)],
+  worldCupRecord: await captainRecord("worldCup", 2, "trophy=12;"),
   batting: formats.slice(0, 3).map((f) => ({ format: f.id, label: f.label, ...f.captaincy })),
   worldCups,
   // Span filter keeps Australia's 150 years of Ashes series on one results page.
   ashes: await seriesList(1, "opposition=1;spanmin1=01+Jan+1997;spanval1=span;", "The Ashes"),
 });
+
+const rankings = [];
+for (const r of RANKINGS) rankings.push(await ranking(r));
+write("rankings.json", { retrieved, rankings });
 
 write("compare.json", await compare());

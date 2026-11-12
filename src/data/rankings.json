@@ -1,0 +1,243 @@
+{
+  "retrieved": "2026-11-12",
+  "rankings": [
+    {
+      "id": "test-wins-player",
+      "title": "Test wins as a player",
+      "measure": "Wins",
+      "rank": 1,
+      "value": 108,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "RT Ponting",
+          "value": 108,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "SK Warne",
+          "value": 92,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "SR Waugh",
+          "value": 86,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "odi-wins-captain",
+      "title": "ODI wins as captain",
+      "measure": "Wins",
+      "rank": 1,
+      "value": 165,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "RT Ponting",
+          "value": 165,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "MS Dhoni",
+          "value": 110,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "AR Border",
+          "value": 107,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "world-cup-wins-captain",
+      "title": "World Cup wins as captain",
+      "measure": "Wins",
+      "rank": 1,
+      "value": 26,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "RT Ponting",
+          "value": 26,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "SP Fleming",
+          "value": 16,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "CH Lloyd",
+          "value": 15,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;trophy=12;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;captain=1;filter=advanced;orderby=matches;result=1;template=results;trophy=12;type=batting",
+      "verified": true
+    },
+    {
+      "id": "international-hundreds",
+      "title": "International hundreds",
+      "measure": "Hundreds",
+      "rank": 3,
+      "value": 71,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "SR Tendulkar",
+          "value": 100,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;orderby=hundreds;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "V Kohli",
+          "value": 86,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;orderby=hundreds;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "RT Ponting",
+          "value": 71,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;orderby=hundreds;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;orderby=hundreds;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "test-runs",
+      "title": "Test runs",
+      "measure": "Runs",
+      "rank": 3,
+      "value": 13378,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "SR Tendulkar",
+          "value": 15921,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "JE Root",
+          "value": 14278,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "RT Ponting",
+          "value": 13378,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "international-runs",
+      "title": "International runs",
+      "measure": "Runs",
+      "rank": 4,
+      "value": 27483,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "SR Tendulkar",
+          "value": 34357,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "V Kohli",
+          "value": 28608,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "KC Sangakkara",
+          "value": 28016,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 4,
+          "player": "RT Ponting",
+          "value": 27483,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=11;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "odi-runs",
+      "title": "ODI runs",
+      "measure": "Runs",
+      "rank": 4,
+      "value": 13704,
+      "leaders": [
+        {
+          "rank": 1,
+          "player": "SR Tendulkar",
+          "value": 18426,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 2,
+          "player": "V Kohli",
+          "value": 15190,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 3,
+          "player": "KC Sangakkara",
+          "value": 14234,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "rank": 4,
+          "player": "RT Ponting",
+          "value": 13704,
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=2;template=results;type=batting",
+      "verified": true
+    }
+  ]
+}

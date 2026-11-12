@@ -38,6 +38,18 @@
       "verified": true
     }
   ],
+  "worldCupRecord": {
+    "format": "worldCup",
+    "span": "2003-2011",
+    "matches": 29,
+    "won": 26,
+    "lost": 2,
+    "drawn": 0,
+    "tied": 0,
+    "noResult": 1,
+    "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+    "verified": true
+  },
   "batting": [
     {
       "format": "test",
