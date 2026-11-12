@@ -1,0 +1,42 @@
+{
+  "retrieved": "2026-11-12",
+  "stints": [
+    {
+      "team": "Mumbai Indians",
+      "role": "Head coach",
+      "years": "2014–2016",
+      "note": "Named head coach in December 2014. Mumbai won the title in his first season in charge.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    },
+    {
+      "team": "Delhi Capitals",
+      "role": "Head coach",
+      "years": "2018–2024",
+      "note": "Appointed in January 2018, when the side was still Delhi Daredevils. Three straight playoff runs followed, including the final of 2020.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    },
+    {
+      "team": "Punjab Kings",
+      "role": "Head coach",
+      "years": "2025–present",
+      "note": "Appointed in September 2024 for the 2025 season. Punjab topped the league table and reached the final in his first year.",
+      "source": "https://en.wikipedia.org/wiki/Ricky_Ponting#Coaching",
+      "verified": true
+    }
+  ],
+  "seasons": [
+    { "season": 2015, "team": "Mumbai Indians", "position": 2, "teams": 8, "finish": "Champions", "source": "https://en.wikipedia.org/wiki/Mumbai_Indians#Seasons", "verified": true },
+    { "season": 2016, "team": "Mumbai Indians", "position": 5, "teams": 8, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Mumbai_Indians#Seasons", "verified": true },
+    { "season": 2018, "team": "Delhi Daredevils", "position": 8, "teams": 8, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2019, "team": "Delhi Capitals", "position": 3, "teams": 8, "finish": "Playoffs", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2020, "team": "Delhi Capitals", "position": 2, "teams": 8, "finish": "Runners-up", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2021, "team": "Delhi Capitals", "position": 1, "teams": 8, "finish": "Playoffs", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2022, "team": "Delhi Capitals", "position": 5, "teams": 10, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2023, "team": "Delhi Capitals", "position": 9, "teams": 10, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2024, "team": "Delhi Capitals", "position": 6, "teams": 10, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Delhi_Capitals#Seasons", "verified": true },
+    { "season": 2025, "team": "Punjab Kings", "position": 1, "teams": 10, "finish": "Runners-up", "source": "https://en.wikipedia.org/wiki/Punjab_Kings#Performance_record", "verified": true },
+    { "season": 2026, "team": "Punjab Kings", "position": 5, "teams": 10, "finish": "League stage", "source": "https://en.wikipedia.org/wiki/Punjab_Kings#Performance_record", "verified": true }
+  ]
+}

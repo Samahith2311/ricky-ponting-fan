@@ -10,6 +10,8 @@ const retrieved = new Date().toISOString().slice(0, 10);
 const player = (id, query) => `${BASE}/player/${id}.html?${query}`;
 const team = (query) => `${BASE}/team/2.html?${query}`; // 2 = Australia
 const num = (s) => (s === undefined || s === "" || s === "-" ? null : Number(s));
+// Statsguru prints "-" in the count columns when he played but did not bat: that is zero, not unknown.
+const count = (s) => num(s) ?? 0;
 const yearOf = (date) => Number(date.slice(-4));
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -28,17 +30,17 @@ async function load(url, attempt = 1) {
 function batting(r, source) {
   return {
     ...(r.Span ? { span: r.Span } : {}),
-    matches: num(r.Mat),
-    innings: num(r.Inns),
-    notOuts: num(r.NO),
-    runs: num(r.Runs),
+    matches: count(r.Mat),
+    innings: count(r.Inns),
+    notOuts: count(r.NO),
+    runs: count(r.Runs),
     highestScore: r.HS === "-" ? null : r.HS,
     average: num(r.Ave),
     ballsFaced: num(r.BF),
     strikeRate: num(r.SR),
-    hundreds: num(r["100s"]),
-    fifties: num(r["50s"]),
-    ducks: num(r.Ducks),
+    hundreds: count(r["100s"]),
+    fifties: count(r["50s"]),
+    ducks: count(r.Ducks),
     fours: num(r["4s"]),
     sixes: num(r["6s"]),
     source,

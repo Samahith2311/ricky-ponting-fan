@@ -7,6 +7,7 @@ import { join } from "node:path";
 const dir = "src/data";
 const numeric = /^\d+(\.\d+)?\*?$/;
 const errors = [];
+const unverified = [];
 
 function walk(node, path, parent) {
   if (typeof node === "number" || (typeof node === "string" && numeric.test(node))) {
@@ -20,6 +21,7 @@ function walk(node, path, parent) {
   } else if (Array.isArray(node)) {
     node.forEach((v, i) => walk(v, `${path}[${i}]`, node));
   } else if (node && typeof node === "object") {
+    if (node.verified === false) unverified.push(path);
     for (const [k, v] of Object.entries(node)) walk(v, `${path}.${k}`, node);
   }
 }
@@ -31,4 +33,6 @@ if (errors.length) {
   console.error(`check:data failed. Numbers without source + verified:\n  ${errors.join("\n  ")}`);
   process.exit(1);
 }
-console.log(`check:data ok (${files.length} files)`);
+console.log(`check:data ok (${files.length} files, ${unverified.length} unverified entries)`);
+// node scripts/check-data.mjs --unverified   lists what still needs checking by hand
+if (process.argv.includes("--unverified")) for (const path of unverified) console.log(`  ${path}`);

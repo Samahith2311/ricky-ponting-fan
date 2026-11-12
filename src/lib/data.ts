@@ -1,6 +1,18 @@
 import captaincy from "@/data/captaincy.json";
 import careerSummary from "@/data/career-summary.json";
-import type { FormatSummary } from "./types";
+import coaching from "@/data/coaching.json";
+import formatCopyJson from "@/data/formats.json";
+import ipl from "@/data/ipl.json";
+import odi from "@/data/odi.json";
+import t20i from "@/data/t20i.json";
+import test from "@/data/test.json";
+import type { FormatData, FormatSummary } from "./types";
+
+export { coaching };
+
+/** Keyed by route segment: /test, /odi, /t20i, /ipl. */
+export const formatData: Record<string, FormatData> = { test, odi, t20i, ipl };
+export const formatCopy: Record<string, { title: string; lead: string }> = formatCopyJson;
 
 export const retrieved = careerSummary.retrieved;
 export const formats: FormatSummary[] = careerSummary.formats;

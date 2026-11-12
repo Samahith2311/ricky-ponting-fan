@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { UnverifiedBanner } from "@/components/unverified-banner";
 import { site, siteUrl } from "@/lib/site";
 
 const display = Big_Shoulders({
@@ -52,6 +53,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
+          {process.env.NODE_ENV === "development" && <UnverifiedBanner />}
           <SiteHeader />
           <main id="main" className="flex-1">
             {children}

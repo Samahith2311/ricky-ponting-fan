@@ -1,0 +1,18 @@
+{
+  "test": {
+    "title": "Test cricket",
+    "lead": "Baggy green and a red ball. The format he was measured by."
+  },
+  "odi": {
+    "title": "One-day internationals",
+    "lead": "Coloured clothing, a white ball and the World Cup years."
+  },
+  "t20i": {
+    "title": "Twenty20 internationals",
+    "lead": "A short chapter late in the career, played while the format was still finding its feet."
+  },
+  "ipl": {
+    "title": "Indian Premier League",
+    "lead": "Brief as a player, long in the dugout: first Mumbai, then Delhi, now Punjab."
+  }
+}

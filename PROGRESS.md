@@ -6,7 +6,7 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 |---|---|
 | 0 Foundation | Done. Pushed to GitHub, deployed on Vercel (confirmed by user) |
 | 1 Design system and homepage | Done |
-| 2 Data layer and format pages | Not started |
+| 2 Data layer and format pages | Done |
 | 3 Captaincy, Records, timeline | Not started |
 | 4 Innings replay | Not started |
 | 5 Compare tool | Not started |
@@ -48,6 +48,25 @@ Decisions:
 - International totals (runs, hundreds, matches) and the World Cup count are computed at render time from the JSON rows.
 - Nav links to `/test` etc. 404 until Phase 2 to 6 add the routes.
 
+## Phase 2 — Data layer and format pages (2026-11-12)
+
+Done:
+- Typed data layer: `FormatData` in `src/lib/types.ts`, loaders in `src/lib/data.ts`. The four format files are type-checked against it at build.
+- One route file, `src/app/[format]/page.tsx`, serves `/test`, `/odi`, `/t20i`, `/ipl` through one `FormatPage`. Anything else at that level is a 404.
+- `FormatPage`: career stat grid, tabs (Overview, By year, By opponent, Home and away), tables for every split, derived highlights (best year, most runs against, best average against).
+- Charts: Recharts for runs by year and average by year (two charts, one axis each), loaded only when scrolled into view. Ranked bars for opponents, venues and host countries are plain HTML so they render on the server and work at 360px with long team names.
+- IPL page adds "In the dugout": three head-coach stints and eleven seasons, from Wikipedia season tables (`src/data/coaching.json`).
+- Dev-only banner (`UnverifiedBanner`) lists every `verified: false` entry. `node scripts/check-data.mjs --unverified` prints the same list.
+
+Checks: build pass, lint pass, check:data pass (10 files, 0 unverified). In the browser: all four routes render, tabs switch, charts render in both themes and at 360px, no horizontal scroll. Banner test: flipped one coaching row to `verified: false`, the dev banner listed `coaching.json.seasons[10]` and the row showed a dagger; the production HTML has no banner; flag restored.
+
+Decisions:
+- No dual-axis chart: runs and average are separate charts sharing the year axis.
+- Statsguru prints "-" in count columns when he played but did not bat; the generator stores 0 there. Average, strike rate and highest score stay `null`.
+- Do not run `npm run build` while `npm run dev` is running: both write `.next` and the dev server breaks.
+
+Fixed along the way: a wide table inside a CSS grid stretched the page to 626px on a 360px screen (`grid-cols-1` fixes it). A PowerShell text round-trip added a BOM to `coaching.json` and broke the en dashes; restored and checked byte by byte.
+
 ## Unverified numbers
 
-None. Every number in `src/data` so far was parsed from the Statsguru page named in its `source`.
+None. Statsguru rows were parsed from the page named in their `source`. Coaching rows were read from the Wikipedia wikitext named in their `source`.
