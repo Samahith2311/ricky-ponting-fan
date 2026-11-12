@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Big_Shoulders, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import { Providers } from "@/components/providers";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import { site, siteUrl } from "@/lib/site";
 
 const display = Big_Shoulders({
@@ -34,10 +36,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${display.variable} ${body.variable}`}>
+    // "dark" is the server default; next-themes swaps the class before paint if the visitor chose light.
+    <html lang="en" className={`dark ${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Without JS the counters never scroll "into view", so show their final digits. */}
+        <noscript>
+          <style>{`.digit-strip{transform:translateY(calc(var(--d) * -10%)) !important}`}</style>
+        </noscript>
+      </head>
       <body className="flex min-h-dvh flex-col">
-        {children}
-        <SiteFooter />
+        <Providers>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+          >
+            Skip to content
+          </a>
+          <SiteHeader />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter />
+        </Providers>
       </body>
     </html>
   );

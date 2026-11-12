@@ -4,8 +4,8 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 
 | Phase | Status |
 |---|---|
-| 0 Foundation | Done, waiting for GitHub push + Vercel import confirmation |
-| 1 Design system and homepage | Not started |
+| 0 Foundation | Done. Pushed to GitHub, deployed on Vercel (confirmed by user) |
+| 1 Design system and homepage | Done |
 | 2 Data layer and format pages | Not started |
 | 3 Captaincy, Records, timeline | Not started |
 | 4 Innings replay | Not started |
@@ -32,8 +32,22 @@ Decisions:
 - Production build uses webpack (`next build`); Turbopack is dev only.
 - Statsguru is reachable for by-year, by-opponent, home/away and captaincy splits, so those can be verified.
 
-Needs from user: push to GitHub, import into Vercel, confirm.
+## Phase 1 — Design system and homepage (2026-11-12)
+
+Done:
+- Data pipeline: `npm run data:build` reads ESPNcricinfo Statsguru result pages (`scripts/statsguru.mjs`) and writes `career-summary.json`, `test.json`, `odi.json`, `t20i.json`, `ipl.json`, `captaincy.json`, `compare.json`. Every row carries its page URL and `verified: true`. The script fails if a breakdown does not add up to the career total, or if captaincy results do not add up to matches.
+- Navbar (Test, ODI, T20I, IPL, Captaincy, Records, Compare, Fan Zone), mobile menu (sheet), theme toggle (dark default, light, persisted), footer with disclaimer and source credit, skip link.
+- `ScoreboardCounter` (rolling number plates, CSS-driven, starts when in view), `StatCard`, `SectionHeading`.
+- Homepage: hero with the scoreboard, by-format boards, links to the other sections.
+
+Checks: build pass, lint pass, check:data pass (8 files). In the browser: counters land on 27483 / 71 / 560 / 3, which are sums of the JSON rows; theme survives reload; mobile menu opens and closes; no horizontal scroll at 360, 768, 1280.
+
+Decisions:
+- Numbers are parsed from Statsguru HTML by script, not typed by hand or transcribed by a model, so `verified: true` means "copied from the cited page on the retrieved date".
+- The hero board stays dark in the light theme (a scoreboard is black in daylight too). Gold is never text on a light background.
+- International totals (runs, hundreds, matches) and the World Cup count are computed at render time from the JSON rows.
+- Nav links to `/test` etc. 404 until Phase 2 to 6 add the routes.
 
 ## Unverified numbers
 
-None yet. No stats in the repo before Phase 1.
+None. Every number in `src/data` so far was parsed from the Statsguru page named in its `source`.

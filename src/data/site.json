@@ -2,8 +2,18 @@
   "name": "Punter Scoreboard",
   "shortName": "Punter",
   "subject": "Ricky Ponting",
+  "nickname": "Punter",
+  "country": "Australia",
   "tagline": "The unofficial Ricky Ponting fan site",
   "description": "An unofficial fan site for Ricky Ponting: career numbers by format, captaincy, records, innings replays and comparisons, with every figure sourced.",
-  "comingSoon": "The scoreboard is being painted. First ball soon.",
-  "disclaimer": "Unofficial fan site. Not affiliated with, endorsed by or connected to Ricky Ponting, Cricket Australia, the ICC, the BCCI, the IPL or any team. Statistics are compiled from public sources and credited where they appear."
+  "lede": "The pull shot, the direct hit, the baggy green. A fan's scoreboard of Ricky Ponting's career, with every figure sourced and none guessed.",
+  "disclaimer": "Unofficial fan site. Not affiliated with, endorsed by or connected to Ricky Ponting, Cricket Australia, the ICC, the BCCI, the IPL or any team. Statistics are compiled from public sources and credited where they appear.",
+  "explore": [
+    { "href": "/captaincy", "title": "Captaincy", "text": "Captain against player, the World Cups, the Ashes won and lost." },
+    { "href": "/records", "title": "Records", "text": "Records, ICC awards and the Hall of Fame." },
+    { "href": "/innings", "title": "Innings replay", "text": "The World Cup final hundred, played back with the scoreboard running." },
+    { "href": "/compare", "title": "Compare", "text": "Ponting beside Tendulkar, Kallis, Lara and Kohli, format by format." },
+    { "href": "/timeline", "title": "Timeline", "text": "From a Tasmanian teenager to the coaching box." },
+    { "href": "/fan-zone", "title": "Fan Zone", "text": "Polls, a quiz and the fan wall." }
+  ]
 }
