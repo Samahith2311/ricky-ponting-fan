@@ -1,6 +1,6 @@
 # CLAUDE.md — Ricky Ponting fan site
 
-Unofficial fan site. Next.js 15 (App Router) + TypeScript, Tailwind CSS v4, shadcn/ui (Radix, `lyra` preset), Motion, Recharts, next-themes, Supabase, next/og, Vercel Analytics. Deployed on Vercel from GitHub. The user is on Windows: give PowerShell-compatible commands.
+Unofficial fan site. Next.js 15 (App Router) + TypeScript, Tailwind CSS v4, shadcn/ui (Radix, `lyra` preset), Motion, Recharts, next-themes, next/og, Vercel Analytics. Deployed on Vercel from GitHub. The user is on Windows: give PowerShell-compatible commands.
 
 ## Hard rules
 
@@ -12,24 +12,7 @@ Unofficial fan site. Next.js 15 (App Router) + TypeScript, Tailwind CSS v4, shad
 
 ## Process
 
-One phase at a time. After each phase: `npm run build`, `npm run lint`, fix errors, test the phase's "done when" check, commit with a clear message, update `PROGRESS.md`. Stop and ask only for things the user must do: GitHub push, Vercel import, Supabase project and keys, or a decision that cannot be made here.
-
-## Commands
-
-```powershell
-npm run dev          # local dev (Turbopack)
-npm run build        # runs check:data first, then next build
-npm run lint         # eslint
-npm run check:data   # every number in src/data has source + verified
-```
-
-## Layout
-
-- `src/app` — routes, layouts, metadata, route handlers
-- `src/components` — site components; `src/components/ui` is shadcn/ui
-- `src/data` — all stats and site copy as JSON
-- `src/lib` — types, data loaders, helpers
-- `supabase/migrations` — SQL migrations (RLS on every table)
+One phase at a time. After each phase: `npm run build`, `npm run lint`, fix errors, test the phase's "done when" check, commit with a clear message, update `PROGRESS.md`. Stop and ask only for things the user must do: GitHub push, Vercel import, or a decision that cannot be made here.
 
 ## Design
 
@@ -39,4 +22,4 @@ Scoreboard, not template. Australian green `#00843D`, gold `#FFCD00`. Dark by de
 
 - Server components by default; `"use client"` only where state, effects, Motion or Recharts need it.
 - Next.js 15: `params` and `searchParams` are Promises in pages and layouts.
-- Supabase writes go through server route handlers only. The service role key never reaches the browser.
+- Page copy (headings, intros, labels) lives in `src/data/site.json`.
