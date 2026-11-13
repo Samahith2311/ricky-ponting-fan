@@ -17,7 +17,6 @@ export const nav = [
   { href: "/captaincy", label: "Captaincy" },
   { href: "/records", label: "Records" },
   { href: "/compare", label: "Compare" },
-  { href: "/fan-zone", label: "Fan Zone" },
 ];
 
 export const footerNav = [...nav, { href: "/timeline", label: "Timeline" }, { href: "/innings", label: "Innings" }];

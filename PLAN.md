@@ -1,6 +1,6 @@
 # PLAN — Unofficial Ricky Ponting fan site
 
-Stack: Next.js 15 (App Router) + TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Recharts, next-themes, Supabase (Postgres + RLS), next/og, Vercel Analytics. Deploy: Vercel via GitHub.
+Stack: Next.js 15 (App Router) + TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Recharts, next-themes, next/og, Vercel Analytics. Deploy: Vercel via GitHub.
 
 After every phase: `npm run build` and `npm run lint` clean, the "done when" check tested, one git commit, `PROGRESS.md` updated.
 
@@ -69,6 +69,8 @@ Done when:
 - Build, lint, `check:data` pass.
 
 ## Phase 6 — Fan Zone with Supabase
+
+**Removed on 2026-11-13 at the owner's request, after it was built and checked. See `PROGRESS.md`. The original scope is kept below for the record.**
 
 Scope: SQL migrations with RLS on every table (`polls`, `poll_options`, `votes`, `quiz_scores`, `fan_wall_posts`); live polls with one vote per browser plus server-side check and rate limiting; 10-question quiz with nickname-only leaderboard; fan wall with spam and profanity filtering and `pending` moderation; page `/fan-zone`. All writes go through server routes; the browser never holds a write key.
 

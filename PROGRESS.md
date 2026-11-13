@@ -12,10 +12,10 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 | 3 Captaincy, Records, timeline | Done | `667d629` |
 | 4 Innings replay | Done | `7d1d722` |
 | 5 Compare tool | Done | `32ab8e2` |
-| 6 Fan Zone with Supabase | Done locally against the real Supabase project. Left for the owner: Vercel variables, security advisor, push | `ebdd6f7` |
+| 6 Fan Zone with Supabase | Built (`ebdd6f7`), then **removed** at the owner's request | the commit after `46d74fe` |
 | 7 Launch polish | Not started | |
 
-**Phase 6 is not pushed yet.** Everything up to `32ab8e2` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 6 commit exists only on this machine. Pushing it is safe without keys: the Fan Zone shows "Not connected" and the quiz still plays. To update the live site:
+**The removal is not pushed yet.** Everything up to `46d74fe` is on GitHub, and the live site still serves the Fan Zone until the removal commit is pushed. To update the live site:
 
 ```powershell
 cd "C:\projectt\Ricky Pointing"
@@ -24,7 +24,7 @@ git push
 
 ### Next
 
-- Phase 6, owner steps left: set the four environment variables in Vercel, look at the security advisor, delete the "Setup check" test rows, push. Detail in `PHASE6-STATUS.md`.
+- Owner clean-up after the Fan Zone removal: push, delete the four Vercel variables, delete the Supabase project or its tables. Listed under Phase 6 below.
 - Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
 - Final handover: unverified list, launch checklist, Vercel env vars.
 
@@ -174,38 +174,21 @@ Decisions:
 - Highest score, ducks, fours and sixes are not compared.
 - A code review after the build led to ten fixes, including the light-theme orange (it was under 3:1 contrast) and a rounded bar corner.
 
-## Phase 6 — Fan Zone with Supabase (2026-11-13)
+## Phase 6 — Fan Zone with Supabase (built, then removed, 2026-11-13)
 
-Full detail, owner steps, known limits and deviations from the design are in `PHASE6-STATUS.md`.
+The Fan Zone (polls, quiz, leaderboard, fan wall on Supabase) was built, checked against a real Supabase project and the live site, and then removed the same day at the owner's request. The site has no database, no API routes and no server-side secrets.
 
-Done:
-- `supabase/migrations/0001_fan_zone.sql`: six tables, row level security on all of them, explicit grants, `fz_hit` (rate limit) and `poll_results` functions, three seeded opinion polls.
-- `src/lib/fan-zone/`: validation and filters (`rules.ts`, pure), config, hashing, plain `fetch` REST calls to Supabase, shared POST steps.
-- Route handlers under `src/app/api/fan-zone/`: `polls`, `polls/vote`, `quiz`, `leaderboard`, `wall`. Every write goes through them with the service role key; the browser holds no key.
-- `/fan-zone`: polls, ten-question quiz, leaderboard, fan wall with post form, privacy note. Copy in `site.json` under `pages.fanZone`. Quiz answers in `src/data/quiz.json`, each copied from an existing data row with its source.
-- `npm run test:fan-zone` (7 tests on the rules). One new dependency: `server-only`.
+Removed: `/fan-zone`, `src/app/api/fan-zone/`, `src/lib/fan-zone/`, the four `fan-zone-*` components, `src/data/quiz.json`, `src/data/moderation.json`, the Fan Zone copy and links in `site.json` and `src/lib/site.ts`, `scripts/fan-zone.test.mjs`, `supabase/migrations/0001_fan_zone.sql`, `PHASE6-STATUS.md`, the `server-only` dependency and the four Supabase names in `.env.example`.
 
-Checks: build pass, lint pass, `tsc` pass, check:data pass (16 files, 0 unverified), self-check 7 of 7. Without keys the site builds, `/fan-zone` shows "Not connected", the quiz plays and POSTs return 503.
+To bring it back: the working version is commit `ebdd6f7` (status notes in `46d74fe`). Revert the removal commit, the one after `46d74fe`. One thing to remember if it returns: Supabase projects created after 2026-05-30 grant nothing on new tables by default, so the migration grants `insert` to `service_role` itself.
 
-Checked against a local Postgres, not a Supabase project (PGlite running the real migration, behind a throwaway stand-in for the Supabase REST calls, with the production build):
-- The migration runs clean. Every table has row level security. The `anon` and `authenticated` roles are denied on `votes`, `rate_limits`, every write and `fz_hit`; `anon` sees no draft poll and no pending or rejected wall post.
-- Votes: a second vote with the same cookie gives 409; a cleared cookie is capped at 5 per poll per day per IP, then 429; the 11th vote in 10 minutes gives 429 with `Retry-After`; an option from another poll 400; a closed poll 409; a draft poll 404. Only hashes are stored.
-- Quiz: extra `score` key 400, nine answers 400, wrong version 409, profane nickname 422, a valid score lands on the leaderboard, the sixth submission in an hour 429.
-- Wall: a link, a spaced swear word and leetspeak each 422; a clean post 202 and stored `pending`; public only after approval; the fourth post in an hour 429.
-- Polls refresh every 15 seconds in the browser, stop while the page reports hidden and refresh at once when it is visible again.
+Checks after the removal: build pass, lint pass, `tsc` pass, check:data pass (14 files, 0 unverified). `/fan-zone` and `/api/fan-zone/polls` are 404 in the production build; the navbar, footer and homepage no longer link to it.
 
-Fixed along the way: Supabase projects created after 2026-05-30 grant nothing on new tables by default, so the server's inserts would have failed with a permission error. The migration now grants `insert` on `votes`, `quiz_scores` and `fan_wall_posts` to `service_role`. A run without that line failed with 42501; with it, both the old and the new default pass.
-
-Checked on the real Supabase project (2026-11-13), after the owner ran the migration: the anon key reads polls and is denied on `votes`, `rate_limits`, every insert and `fz_hit`; through the production build a vote, a repeat vote (409), a quiz score, a pending wall post and a rejected link post all behave as designed with the `sb_publishable_` and `sb_secret_` keys.
-
-Not checked:
-- The security advisor, and the deployed site on Vercel (CDN cache times, real client addresses for rate limits).
-- The hidden-tab pause with a really hidden tab. The automated browser reports every tab as visible, so "hidden" was simulated by overriding `document.visibilityState`.
-- Screen-reader output, and reduced motion with the real OS setting.
-
-Decisions:
-- `PLAN.md` carries no ticks for any phase; this file is the status record.
-- The local Postgres stand-in was a throwaway and is not in the repo (it would add a dependency).
+Left for the owner (nothing breaks if these wait):
+- Vercel: delete `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` and `FAN_ZONE_HASH_SECRET`.
+- Supabase: delete the project, or drop the six tables and two functions.
+- `.env.local`: remove the same four lines. Only `NEXT_PUBLIC_SITE_URL` is used.
+- `CLAUDE.md` still names Supabase in the stack line, the process line and two conventions.
 
 ## Unverified numbers
 

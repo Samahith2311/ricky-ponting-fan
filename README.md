@@ -2,7 +2,7 @@
 
 An unofficial Ricky Ponting fan site. Not affiliated with Ricky Ponting, Cricket Australia, the ICC, the BCCI, the IPL or any team.
 
-Next.js 15 (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Recharts, Supabase. Deployed on Vercel.
+Next.js 15 (App Router), TypeScript, Tailwind CSS v4, shadcn/ui, Motion, Recharts. Deployed on Vercel.
 
 ```powershell
 npm install
