@@ -11,11 +11,11 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 | 2 Data layer and format pages | Done | `5da9eb9` |
 | 3 Captaincy, Records, timeline | Done | `667d629` |
 | 4 Innings replay | Done | `7d1d722` |
-| 5 Compare tool | Done | the commit after `7d1d722` |
-| 6 Fan Zone with Supabase | Not started. Will pause for Supabase keys | |
+| 5 Compare tool | Done | `32ab8e2` |
+| 6 Fan Zone with Supabase | Built and committed. **Paused for the Supabase project and keys** (owner steps below) | the commit after `32ab8e2` |
 | 7 Launch polish | Not started | |
 
-**Phases 3 to 5 are not pushed yet.** Everything up to `22d216f` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 3, 4 and 5 commits exist only on this machine. To update the live site:
+**Phase 6 is not pushed yet.** Everything up to `32ab8e2` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 6 commit exists only on this machine. Pushing it is safe without keys: the Fan Zone shows "Not connected" and the quiz still plays. To update the live site:
 
 ```powershell
 cd "C:\projectt\Ricky Pointing"
@@ -24,7 +24,7 @@ git push
 
 ### Next
 
-- Phase 6, Fan Zone: build so the site works without keys, then pause for the Supabase project and keys.
+- Phase 6, owner steps: create the Supabase project, run the migration, set the four environment variables locally and in Vercel. The numbered list is in `PHASE6-STATUS.md`. Then repeat the "still needs a real Supabase project" checks listed there.
 - Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
 - Final handover: unverified list, launch checklist, Vercel env vars.
 
@@ -173,6 +173,37 @@ Decisions:
 - The radar is scaled per axis to the higher of the two players and is hidden from screen readers; the bars carry every value. A measure with no recorded value is dropped from the radar and named in the summary.
 - Highest score, ducks, fours and sixes are not compared.
 - A code review after the build led to ten fixes, including the light-theme orange (it was under 3:1 contrast) and a rounded bar corner.
+
+## Phase 6 — Fan Zone with Supabase (2026-11-13)
+
+Full detail, owner steps, known limits and deviations from the design are in `PHASE6-STATUS.md`.
+
+Done:
+- `supabase/migrations/0001_fan_zone.sql`: six tables, row level security on all of them, explicit grants, `fz_hit` (rate limit) and `poll_results` functions, three seeded opinion polls.
+- `src/lib/fan-zone/`: validation and filters (`rules.ts`, pure), config, hashing, plain `fetch` REST calls to Supabase, shared POST steps.
+- Route handlers under `src/app/api/fan-zone/`: `polls`, `polls/vote`, `quiz`, `leaderboard`, `wall`. Every write goes through them with the service role key; the browser holds no key.
+- `/fan-zone`: polls, ten-question quiz, leaderboard, fan wall with post form, privacy note. Copy in `site.json` under `pages.fanZone`. Quiz answers in `src/data/quiz.json`, each copied from an existing data row with its source.
+- `npm run test:fan-zone` (7 tests on the rules). One new dependency: `server-only`.
+
+Checks: build pass, lint pass, `tsc` pass, check:data pass (16 files, 0 unverified), self-check 7 of 7. Without keys the site builds, `/fan-zone` shows "Not connected", the quiz plays and POSTs return 503.
+
+Checked against a local Postgres, not a Supabase project (PGlite running the real migration, behind a throwaway stand-in for the Supabase REST calls, with the production build):
+- The migration runs clean. Every table has row level security. The `anon` and `authenticated` roles are denied on `votes`, `rate_limits`, every write and `fz_hit`; `anon` sees no draft poll and no pending or rejected wall post.
+- Votes: a second vote with the same cookie gives 409; a cleared cookie is capped at 5 per poll per day per IP, then 429; the 11th vote in 10 minutes gives 429 with `Retry-After`; an option from another poll 400; a closed poll 409; a draft poll 404. Only hashes are stored.
+- Quiz: extra `score` key 400, nine answers 400, wrong version 409, profane nickname 422, a valid score lands on the leaderboard, the sixth submission in an hour 429.
+- Wall: a link, a spaced swear word and leetspeak each 422; a clean post 202 and stored `pending`; public only after approval; the fourth post in an hour 429.
+- Polls refresh every 15 seconds in the browser, stop while the page reports hidden and refresh at once when it is visible again.
+
+Fixed along the way: Supabase projects created after 2026-05-30 grant nothing on new tables by default, so the server's inserts would have failed with a permission error. The migration now grants `insert` on `votes`, `quiz_scores` and `fan_wall_posts` to `service_role`. A run without that line failed with 42501; with it, both the old and the new default pass.
+
+Not checked:
+- Anything on a real Supabase project: the security advisor, the real REST layer with real keys (header handling for `sb_` keys), and that the Data API exposes the `public` schema.
+- The hidden-tab pause with a really hidden tab. The automated browser reports every tab as visible, so "hidden" was simulated by overriding `document.visibilityState`.
+- Screen-reader output, and reduced motion with the real OS setting.
+
+Decisions:
+- `PLAN.md` carries no ticks for any phase; this file is the status record.
+- The local Postgres stand-in was a throwaway and is not in the repo (it would add a dependency).
 
 ## Unverified numbers
 

@@ -1,0 +1,295 @@
+{
+  "version": "q1",
+  "questions": [
+    {
+      "id": "test-runs",
+      "prompt": "How many Test runs did Ricky Ponting score in his career?",
+      "answer": 1,
+      "options": [
+        {
+          "text": "12378",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "13378",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "14012",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "11965",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "odi-runs",
+      "prompt": "How many one-day international runs did he score?",
+      "answer": 0,
+      "options": [
+        {
+          "text": "13704",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "12992",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "14210",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "15103",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "test-hundreds",
+      "prompt": "How many Test hundreds did he make?",
+      "answer": 2,
+      "options": [
+        {
+          "text": "35",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "38",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "41",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "47",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "test-high",
+      "prompt": "What was his highest Test score?",
+      "answer": 3,
+      "options": [
+        {
+          "text": "242",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "248*",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "281",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "257",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "test-matches",
+      "prompt": "How many Test matches did he play?",
+      "answer": 1,
+      "options": [
+        {
+          "text": "151",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "168",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "184",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "199",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "captain-tests",
+      "prompt": "In how many Tests did he captain Australia?",
+      "answer": 0,
+      "options": [
+        {
+          "text": "77",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=1;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "62",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=1;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "91",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=1;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "104",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=1;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=1;filter=advanced;orderby=default;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "captain-odi-wins",
+      "prompt": "How many one-day internationals did Australia win under his captaincy?",
+      "answer": 2,
+      "options": [
+        {
+          "text": "141",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "150",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "165",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "188",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "captain-wc-wins",
+      "prompt": "How many World Cup matches did Australia win with him as captain?",
+      "answer": 3,
+      "options": [
+        {
+          "text": "17",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "21",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "29",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "26",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?captain=1;class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+      "verified": true
+    },
+    {
+      "id": "test-wins",
+      "prompt": "How many Test wins did he take part in, more than any other player?",
+      "answer": 1,
+      "options": [
+        {
+          "text": "84",
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "108",
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "97",
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        },
+        {
+          "text": "121",
+          "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/stats/index.html?class=1;filter=advanced;orderby=matches;result=1;template=results;type=batting",
+      "verified": true
+    },
+    {
+      "id": "wc-hundreds",
+      "prompt": "How many World Cup hundreds did he make?",
+      "answer": 2,
+      "options": [
+        {
+          "text": "3",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "4",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "5",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        },
+        {
+          "text": "7",
+          "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+          "verified": true
+        }
+      ],
+      "source": "https://stats.espncricinfo.com/ci/engine/player/7133.html?class=2;filter=advanced;orderby=default;template=results;trophy=12;type=batting",
+      "verified": true
+    }
+  ]
+}
