@@ -1,9 +1,6 @@
 import { SectionHeading } from "@/components/section-heading";
 import { coaching, formatDate } from "@/lib/data";
-
-const ordinalRules = new Intl.PluralRules("en", { type: "ordinal" });
-const SUFFIX: Record<string, string> = { one: "st", two: "nd", few: "rd", other: "th" };
-const ordinal = (n: number) => `${n}${SUFFIX[ordinalRules.select(n)]}`;
+import { ordinal } from "@/lib/utils";
 
 const cell = "px-3 py-2";
 

@@ -2,13 +2,21 @@ import captaincy from "@/data/captaincy.json";
 import careerSummary from "@/data/career-summary.json";
 import coaching from "@/data/coaching.json";
 import formatCopyJson from "@/data/formats.json";
+import honoursJson from "@/data/honours.json";
 import ipl from "@/data/ipl.json";
 import odi from "@/data/odi.json";
+import rankingsJson from "@/data/rankings.json";
 import t20i from "@/data/t20i.json";
 import test from "@/data/test.json";
-import type { FormatData, FormatSummary } from "./types";
+import timelineJson from "@/data/timeline.json";
+import type { CaptaincyData, FormatData, FormatSummary, Honour, Ranking, TimelineEvent } from "./types";
 
 export { coaching };
+
+export const captaincyData: CaptaincyData = captaincy;
+export const rankings: Ranking[] = rankingsJson.rankings;
+export const honours: Honour[] = honoursJson.honours;
+export const timeline: TimelineEvent[] = timelineJson.events;
 
 /** Keyed by route segment: /test, /odi, /t20i, /ipl. */
 export const formatData: Record<string, FormatData> = { test, odi, t20i, ipl };

@@ -2,49 +2,32 @@
 
 Running log. Phases and "done when" checks are in `PLAN.md`.
 
-## Where we stopped (2026-11-12, end of day)
+## Where we stopped (2026-11-13)
 
 | Phase | Status | Commit |
 |---|---|---|
 | 0 Foundation | Done. Pushed to GitHub, deployed on Vercel (confirmed by user) | `6d34145` |
 | 1 Design system and homepage | Done | `12c9354` |
 | 2 Data layer and format pages | Done | `5da9eb9` |
-| 3 Captaincy, Records, timeline | **In progress.** Data ready, pages not built | latest commit |
+| 3 Captaincy, Records, timeline | Done | the commit after `22d216f` |
 | 4 Innings replay | Not started | |
 | 5 Compare tool | Not started (data already generated) | |
 | 6 Fan Zone with Supabase | Not started. Will pause for Supabase keys | |
 | 7 Launch polish | Not started | |
 
-**Not pushed yet.** Phases 1 and 2 and the Phase 3 data exist only on this machine. The live Vercel site still shows the Phase 0 "Coming soon" page. To update it:
+**Phase 3 pages are not pushed yet.** Everything up to `22d216f` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 3 commit exists only on this machine. To update the live site:
 
 ```powershell
 cd "C:\projectt\Ricky Pointing"
 git push
 ```
 
-### Phase 3: what is ready
+### Next
 
-All four files pass `npm run check:data` with 0 unverified entries.
-
-- `src/data/captaincy.json` (generated): win/loss record as captain per format (`record`), World Cup record as captain (`worldCupRecord`), batting as captain against not captain (`batting`), all five World Cups he played (`worldCups`), all eight Ashes series with a `captain` flag (`ashes`).
-- `src/data/rankings.json` (generated): seven all-time lists with the leaders. He is 1st for Test wins as a player, ODI wins as captain and World Cup wins as captain; 3rd for Test runs and international hundreds; 4th for ODI runs and international runs.
-- `src/data/honours.json` (hand-written, read from Wikipedia wikitext and one Statsguru records page): 17 entries in four categories: ICC awards, Hall of Fame, Honours, Records.
-- `src/data/timeline.json` (hand-written, same sources): 24 events from 1974 to 2024. `major: true` marks the ones for the homepage cut.
-
-### Phase 3: what is left
-
-1. Loaders and types in `src/lib/data.ts` and `src/lib/types.ts` for `rankings.json`, `honours.json`, `timeline.json`.
-2. `/captaincy`: record per format with a results bar, Captain vs Player toggle (client component), 2003 and 2007 World Cup panels plus a table of all five, Ashes highs and lows.
-3. `/records`: filterable cards (Records, ICC awards, Hall of Fame, Honours) built from `rankings.json` and `honours.json`, with an empty state.
-4. Timeline: scroll-driven component (Motion `useScroll`), `/timeline` page, homepage section using the `major` events. Static when reduced motion is on.
-5. Build, lint, the Phase 3 "done when" checks, commit, update this file.
-
-### After Phase 3
-
-- Phase 4, innings replay: try Cricsheet ball-by-ball data for the 2003 final (ESPNcricinfo match 65286) first. If it is not there, build from milestones and mark every reconstructed point `verified: false`.
+- Phase 4, innings replay: try Cricsheet ball-by-ball data for the 2003 final (ESPNcricinfo match 65286) first. If it is not there, build from milestones and mark every reconstructed point `verified: false`. The timeline already links to `/innings/2003-world-cup-final`; that link is a 404 until this phase ships.
 - Phase 5, compare: `src/data/compare.json` is already generated. The second series colour in dark mode must pass the dataviz palette validator (gold plus `#6aa9ff` failed its lightness band).
 - Phase 6, Fan Zone: build so the site works without keys, then pause for the Supabase project and keys.
-- Phase 7, launch polish: includes a look at the homepage bundle (First Load JS 199 kB).
+- Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
 - Final handover: unverified list, launch checklist, Vercel env vars.
 
 ### To resume
@@ -59,6 +42,7 @@ Open this folder in Claude Code and say: `continue from PROGRESS.md`.
 - Statsguru answers 503 when asked too fast. `scripts/build-data.mjs` waits and retries; a full `npm run data:build` takes about three minutes.
 - Kohli is still playing, so his rows in `compare.json` and `rankings.json` move. Run `npm run data:build` again before launch.
 - The GateGuard hook denies the first write to a new file in each folder per turn. State the facts it asks for and retry.
+- Port 3000 can be held by another project on this machine (`C:\projectt\CamPus_security\web`). Run this site on another port: `npm run dev -- -p 3100`.
 
 ## Phase 0 — Foundation (2026-11-12)
 
@@ -113,6 +97,35 @@ Decisions:
 - Do not run `npm run build` while `npm run dev` is running: both write `.next` and the dev server breaks.
 
 Fixed along the way: a wide table inside a CSS grid stretched the page to 626px on a 360px screen (`grid-cols-1` fixes it). A PowerShell text round-trip added a BOM to `coaching.json` and broke the en dashes; restored and checked byte by byte.
+
+## Phase 3 — Captaincy, Records and timeline (2026-11-13)
+
+Data (all four files pass `check:data`, 0 unverified):
+- `src/data/captaincy.json` (generated): record as captain per format, World Cup record as captain, batting as captain against not captain, all five World Cups he played, all eight Ashes series with a `captain` flag.
+- `src/data/rankings.json` (generated): seven all-time lists with the leaders.
+- `src/data/honours.json` (hand-written from Wikipedia wikitext and one Statsguru records page): 17 entries in four categories.
+- `src/data/timeline.json` (hand-written, same sources): 24 events, 1974 to 2024. `major: true` marks the homepage cut.
+
+Done:
+- Types and loaders for captaincy, rankings, honours and timeline in `src/lib/types.ts` and `src/lib/data.ts`.
+- `/captaincy`: record as captain per format with a results bar (win rate computed at render), Captain vs Player toggle (`captain-toggle.tsx`, client), 2003 and 2007 World Cup panels, a table of all five World Cups, the eight Ashes series with the captained ones flagged and highlight cards derived from the rows.
+- `/records`: cards from `rankings.json` and `honours.json`, client filter whose categories come from the data, empty state.
+- Timeline: `CareerTimeline` (server) inside `TimelineRail` (client, Motion `useScroll` progress line). `/timeline` shows every event; the homepage shows the `major` ones and links to the full page.
+- `UnverifiedMark`: dagger plus footnote for any `verified: false` entry on the new pages.
+- Page titles and leads for the three pages in `site.json` under `pages`.
+
+Checks: build pass, lint pass, check:data pass (13 files, 0 unverified). In the browser (production build): the toggle swaps captain and not-captain numbers and they match `captaincy.json`; the filter narrows the cards per category; the timeline progress line follows scroll; no horizontal scroll at 360px on `/`, `/captaincy`, `/records`, `/timeline` (768 and 1280 were checked before the review fixes, which did not touch layout); heading order is h1, h2, h3. Unverified mark test: five entries flipped to `verified: false`, marks and footnotes showed, files restored.
+
+Not checked:
+- Reduced motion with the real OS setting. It was simulated by overriding `matchMedia`: no progress line, every event visible.
+- The homepage timeline section in the dark theme.
+- The records empty state with real data. No category is empty, so it was seen only by forcing it.
+
+Decisions:
+- `rankings.json` has no category, so its seven lists are filed under Records.
+- `timeline.json` keeps its hand-written order. The loader does not sort.
+- Series titles are left out of the World Cup and Ashes tables to keep the sticky first column narrow at 360px.
+- A code review after the build led to twelve fixes: one typed count in the captaincy lead, heading order, link names for screen readers, the unverified mark, and moving the timeline list back to a server component.
 
 ## Unverified numbers
 

@@ -1,10 +1,11 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
+import { CareerTimeline } from "@/components/career-timeline";
 import { ScoreboardCounter } from "@/components/scoreboard-counter";
 import { SectionHeading } from "@/components/section-heading";
 import { StatCard } from "@/components/stat-card";
 import { Button } from "@/components/ui/button";
-import { formatDate, formats, international, retrieved, worldCupWins } from "@/lib/data";
+import { formatDate, formats, international, retrieved, timeline, worldCupWins } from "@/lib/data";
 import { site } from "@/lib/site";
 
 const board = [
@@ -94,6 +95,23 @@ export default function Home() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <SectionHeading
+          title={site.pages.timeline.title}
+          lead={site.pages.timeline.lead}
+          action={
+            <Link
+              href="/timeline"
+              className="flex items-center gap-1.5 font-heading text-lg font-bold tracking-wide whitespace-nowrap uppercase hover:text-score"
+            >
+              Full timeline
+              <ArrowRightIcon className="size-5" weight="bold" />
+            </Link>
+          }
+        />
+        <CareerTimeline events={timeline.filter((event) => event.major)} />
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">

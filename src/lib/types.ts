@@ -33,3 +33,86 @@ export type FormatData = {
   venue: (BattingRow & { venue: string })[];
   captaincy: { captain: BattingRow | null; player: BattingRow | null };
 };
+
+/** Australia's results over a run of matches. Which of drawn, tied and noResult appear depends on the source page. */
+export type TeamResults = {
+  matches: number;
+  won: number;
+  lost: number;
+  drawn?: number;
+  tied?: number;
+  noResult?: number;
+  source: string;
+  verified: boolean;
+};
+
+export type CaptaincyRecord = TeamResults & { format: string; span: string };
+
+/** One World Cup or Ashes series: his batting there and Australia's results. */
+export type Tournament = {
+  year: number;
+  season: string;
+  title: string;
+  startDate: string;
+  winner: string;
+  captain: boolean;
+  batting: BattingRow;
+  team: TeamResults;
+  source: string;
+  verified: boolean;
+};
+
+export type CaptaincyBatting = {
+  format: string;
+  label: string;
+  captain: BattingRow;
+  /** null when he never played the format without the captaincy. */
+  player: BattingRow | null;
+};
+
+/** Shape of captaincy.json (written by scripts/build-data.mjs). */
+export type CaptaincyData = {
+  retrieved: string;
+  record: CaptaincyRecord[];
+  worldCupRecord: CaptaincyRecord;
+  batting: CaptaincyBatting[];
+  worldCups: Tournament[];
+  ashes: Tournament[];
+};
+
+/** One all-time list from rankings.json; `rank` and `value` are his own place and figure. */
+export type Ranking = {
+  id: string;
+  title: string;
+  measure: string;
+  rank: number;
+  value: number;
+  leaders: { rank: number; player: string; value: number; source: string; verified: boolean }[];
+  source: string;
+  verified: boolean;
+};
+
+/** One entry of honours.json. Empty strings mean "not recorded". */
+export type Honour = {
+  id: string;
+  category: string;
+  title: string;
+  subtitle: string;
+  when: string;
+  value?: string;
+  note: string;
+  source: string;
+  verified: boolean;
+};
+
+/** One entry of timeline.json. `date` is "YYYY", "YYYY-MM" or "YYYY-MM-DD". */
+export type TimelineEvent = {
+  id: string;
+  date: string;
+  title: string;
+  text: string;
+  href?: string;
+  major: boolean;
+  source: string;
+  verified: boolean;
+};

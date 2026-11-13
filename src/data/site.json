@@ -8,6 +8,20 @@
   "description": "An unofficial fan site for Ricky Ponting: career numbers by format, captaincy, records, innings replays and comparisons, with every figure sourced.",
   "lede": "The pull shot, the direct hit, the baggy green. A fan's scoreboard of Ricky Ponting's career, with every figure sourced and none guessed.",
   "disclaimer": "Unofficial fan site. Not affiliated with, endorsed by or connected to Ricky Ponting, Cricket Australia, the ICC, the BCCI, the IPL or any team. Statistics are compiled from public sources and credited where they appear.",
+  "pages": {
+    "captaincy": {
+      "title": "Captaincy",
+      "lead": "Australia's captain in Tests, one-day internationals and Twenty20s: the results, the batting with and without the armband, the World Cups and the Ashes."
+    },
+    "records": {
+      "title": "Records",
+      "lead": "Where he ranks all-time, the marks he holds, and the awards and halls of fame."
+    },
+    "timeline": {
+      "title": "Career timeline",
+      "lead": "From a Tasmanian teenager to the coaching box, event by event."
+    }
+  },
   "explore": [
     { "href": "/captaincy", "title": "Captaincy", "text": "Captain against player, the World Cups, the Ashes won and lost." },
     { "href": "/records", "title": "Records", "text": "Records, ICC awards and the Hall of Fame." },
