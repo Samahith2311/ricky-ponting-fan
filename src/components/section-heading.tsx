@@ -1,6 +1,6 @@
 type Props = {
   title: string;
-  lead?: string;
+  lead?: React.ReactNode;
   /** Right-hand slot, usually a link. */
   action?: React.ReactNode;
   as?: "h1" | "h2" | "h3";

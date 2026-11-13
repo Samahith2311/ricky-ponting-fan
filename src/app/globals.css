@@ -160,6 +160,12 @@
   justify-content: center;
 }
 
+/* Counters that must always show the current value (the innings replay steps every few milliseconds). */
+.no-roll .digit-strip {
+  transform: translateY(calc(var(--d) * -10%)) !important;
+  transition: none !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   [data-rolling="false"] .digit-strip {
     transform: translateY(0);

@@ -116,3 +116,49 @@ export type TimelineEvent = {
   source: string;
   verified: boolean;
 };
+
+/** The state of an innings after one legal ball. `n` counts legal balls bowled in the innings. */
+export type InningsPoint = {
+  n: number;
+  team: number;
+  wickets: number;
+  runs: number;
+  balls: number;
+  fours: number;
+  sixes: number;
+  source: string;
+  verified: boolean;
+};
+
+export type InningsMilestone = { runs: number; label: string; text: string; source: string; verified: boolean };
+
+/** Shape of each file in src/data/innings (written by scripts/build-innings.mjs). */
+export type Innings = {
+  id: string;
+  title: string;
+  date: string;
+  venue: string;
+  batter: string;
+  team: string;
+  opponent: string;
+  retrieved: string;
+  result: { winner: string; by: string; margin: number; source: string; verified: boolean } | null;
+  final: {
+    runs: number;
+    notOut: boolean;
+    balls: number;
+    fours: number;
+    sixes: number;
+    teamRuns: number;
+    teamWickets: number;
+    legalBalls: number;
+    ballsPerOver: number;
+    source: string;
+    verified: boolean;
+  };
+  captions: { arrival: string; end: string };
+  milestones: InningsMilestone[];
+  credit: { name: string; url: string; licence: string; licenceUrl: string; checkedAgainst: string[] };
+  /** From the moment the batter reaches the crease to the last ball. */
+  points: InningsPoint[];
+};

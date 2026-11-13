@@ -17,6 +17,10 @@
       "title": "Records",
       "lead": "Where he ranks all-time, the marks he holds, and the awards and halls of fame."
     },
+    "innings": {
+      "title": "Innings replay",
+      "lead": "Pick an innings and play it back ball by ball: the scoreboard, the run rate and the key moments, built from ball-by-ball data."
+    },
     "timeline": {
       "title": "Career timeline",
       "lead": "From a Tasmanian teenager to the coaching box, event by event."
