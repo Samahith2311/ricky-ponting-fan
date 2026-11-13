@@ -12,7 +12,7 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 | 3 Captaincy, Records, timeline | Done | `667d629` |
 | 4 Innings replay | Done | `7d1d722` |
 | 5 Compare tool | Done | `32ab8e2` |
-| 6 Fan Zone with Supabase | Built and committed. **Paused for the Supabase project and keys** (owner steps below) | the commit after `32ab8e2` |
+| 6 Fan Zone with Supabase | Done locally against the real Supabase project. Left for the owner: Vercel variables, security advisor, push | `ebdd6f7` |
 | 7 Launch polish | Not started | |
 
 **Phase 6 is not pushed yet.** Everything up to `32ab8e2` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 6 commit exists only on this machine. Pushing it is safe without keys: the Fan Zone shows "Not connected" and the quiz still plays. To update the live site:
@@ -24,7 +24,7 @@ git push
 
 ### Next
 
-- Phase 6, owner steps: create the Supabase project, run the migration, set the four environment variables locally and in Vercel. The numbered list is in `PHASE6-STATUS.md`. Then repeat the "still needs a real Supabase project" checks listed there.
+- Phase 6, owner steps left: set the four environment variables in Vercel, look at the security advisor, delete the "Setup check" test rows, push. Detail in `PHASE6-STATUS.md`.
 - Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
 - Final handover: unverified list, launch checklist, Vercel env vars.
 
@@ -196,8 +196,10 @@ Checked against a local Postgres, not a Supabase project (PGlite running the rea
 
 Fixed along the way: Supabase projects created after 2026-05-30 grant nothing on new tables by default, so the server's inserts would have failed with a permission error. The migration now grants `insert` on `votes`, `quiz_scores` and `fan_wall_posts` to `service_role`. A run without that line failed with 42501; with it, both the old and the new default pass.
 
+Checked on the real Supabase project (2026-11-13), after the owner ran the migration: the anon key reads polls and is denied on `votes`, `rate_limits`, every insert and `fz_hit`; through the production build a vote, a repeat vote (409), a quiz score, a pending wall post and a rejected link post all behave as designed with the `sb_publishable_` and `sb_secret_` keys.
+
 Not checked:
-- Anything on a real Supabase project: the security advisor, the real REST layer with real keys (header handling for `sb_` keys), and that the Data API exposes the `public` schema.
+- The security advisor, and the deployed site on Vercel (CDN cache times, real client addresses for rate limits).
 - The hidden-tab pause with a really hidden tab. The automated browser reports every tab as visible, so "hidden" was simulated by overriding `document.visibilityState`.
 - Screen-reader output, and reduced motion with the real OS setting.
 

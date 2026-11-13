@@ -44,12 +44,15 @@ Fix made: the migration now has `grant insert on votes, quiz_scores, fan_wall_po
 6. Approve fan wall posts by setting `status` to `approved` in the Table Editor. There is no admin page.
 7. `git push` when ready.
 
-### Still needs a real Supabase project
-The checks above passed on a local Postgres. Repeat these once the project exists:
+### Checked on the real Supabase project (2026-11-13)
+The migration is applied and `.env.local` holds the four values (`sb_publishable_` and `sb_secret_` keys).
+- With the anon key directly against the REST API: 3 polls, 13 options and `poll_results` readable; `votes` and `rate_limits` denied; inserts into `votes`, `quiz_scores` and `fan_wall_posts` denied; `rpc/fz_hit` denied.
+- Through the production build: `/fan-zone` shows the seeded polls; a vote counts and sets the cookie; a second vote with that cookie gives 409; a quiz score lands on the leaderboard; a wall post gives 202, is stored `pending` and is not public; a post with a link gives 422.
+- Those checks left test rows: one vote, one score and one pending post under the nickname "Setup check". Delete them in the SQL editor before launch.
+
+### Still to do on the real project
 - Security advisor clean (Dashboard, Advisors).
-- The real REST layer with the real keys: `/fan-zone` shows polls instead of "Not connected"; one vote, one quiz score and one wall post go through. This is the first time the `apikey` header handling for `sb_publishable_` and `sb_secret_` keys meets Supabase.
-- With the anon key directly against `https://<project>.supabase.co/rest/v1/`: `votes` and `rate_limits` denied, an insert denied, `rpc/fz_hit` denied.
-- On Vercel: an approved wall post appears within 30 seconds (CDN cache), and rate limits see the real client address.
+- Set the four values in Vercel, then on the deployed site: an approved wall post appears within 30 seconds (CDN cache), and rate limits see the real client address.
 
 ### Not seen in the browser
 - The pause with a really hidden tab. The automated browser reports background tabs as visible, so `document.visibilityState` was overridden to "hidden" for the check.
