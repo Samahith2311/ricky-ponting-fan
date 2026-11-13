@@ -21,6 +21,17 @@
       "title": "Innings replay",
       "lead": "Pick an innings and play it back ball by ball: the scoreboard, the run rate and the key moments, built from ball-by-ball data."
     },
+    "compare": {
+      "title": "Compare",
+      "lead": "Pick two batters and a format. Their career figures sit side by side, drawn as bars and as a radar, with a summary built from the same numbers.",
+      "radarNote": "Each axis is scaled so the higher of the two players reaches the outer edge. That is for drawing only: the shape compares the pair measure by measure, not one measure with another. The real values are in the bars beside it and in the tooltip.",
+      "eraHeading": "Reading it fairly",
+      "eraNote": [
+        "These are raw career figures. They are not adjusted for era, pitches, opposition, rules, equipment or how much cricket was scheduled in each career, and those differ between players.",
+        "Totals such as runs and hundreds grow with the length of a career. Averages and strike rates do not, but they carry their own context.",
+        "A player who is still active has figures that keep moving. Everything here is as of the retrieved date."
+      ]
+    },
     "timeline": {
       "title": "Career timeline",
       "lead": "From a Tasmanian teenager to the coaching box, event by event."

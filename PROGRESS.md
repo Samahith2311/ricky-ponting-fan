@@ -10,12 +10,12 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 | 1 Design system and homepage | Done | `12c9354` |
 | 2 Data layer and format pages | Done | `5da9eb9` |
 | 3 Captaincy, Records, timeline | Done | `667d629` |
-| 4 Innings replay | Done | the commit after `667d629` |
-| 5 Compare tool | Not started (data already generated) | |
+| 4 Innings replay | Done | `7d1d722` |
+| 5 Compare tool | Done | the commit after `7d1d722` |
 | 6 Fan Zone with Supabase | Not started. Will pause for Supabase keys | |
 | 7 Launch polish | Not started | |
 
-**Phases 3 and 4 are not pushed yet.** Everything up to `22d216f` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 3 and Phase 4 commits exist only on this machine. To update the live site:
+**Phases 3 to 5 are not pushed yet.** Everything up to `22d216f` is on GitHub (`main` matched `origin/main` on 2026-11-13). The Phase 3, 4 and 5 commits exist only on this machine. To update the live site:
 
 ```powershell
 cd "C:\projectt\Ricky Pointing"
@@ -24,7 +24,6 @@ git push
 
 ### Next
 
-- Phase 5, compare: `src/data/compare.json` is already generated. The second series colour in dark mode must pass the dataviz palette validator (gold plus `#6aa9ff` failed its lightness band).
 - Phase 6, Fan Zone: build so the site works without keys, then pause for the Supabase project and keys.
 - Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
 - Final handover: unverified list, launch checklist, Vercel env vars.
@@ -153,6 +152,27 @@ Decisions:
 - The batter name is shown scorecard style, as Cricsheet has it.
 - `build-innings` is run by hand. It is not part of `npm run data:build`.
 - A code review after the build led to eleven fixes: the plates no longer roll inside the player (they lagged the chart), points end at a dismissal, sources cite the archive and file, and the gallery carries the attribution.
+
+## Phase 5 — Compare tool (2026-11-13)
+
+Done:
+- `/compare`: any two of the five batters in `compare.json`, per format. The selection lives in the URL as `?a=&b=&format=`. `src/lib/compare.ts` validates it: values are lowercased, bad or missing values fall back to the default pair, and a duplicate pair is repaired.
+- Side-by-side bars with the real values printed (matches, runs, average, strike rate, hundreds, fifties), a radar chart (Recharts, loaded lazily), a summary line generated from the data, an era note, an empty state when a player has no figures in the format, and per-player source links with the retrieved date.
+- Picking the player the other select holds swaps the two.
+- Series colours are tokens in `globals.css`: `--compare-a` (blue) and `--compare-b` (orange).
+
+Checks: build pass, lint pass, check:data pass (14 files, 0 unverified). In the browser: changing a player or the format updates bars, radar, summary and URL, and the values match `compare.json`; a shared URL restores the view; invalid, upper-case, array-valued and missing params fall back; the empty state shows for a player with no figures in a format; Back and Forward step through the choices with controls and results in agreement; results are marked busy while the server answers; no horizontal scroll at 360, 768 and 1280; both themes.
+
+Palette: the pair passes the dataviz palette validator in both themes on both surfaces (lightness band, chroma, colour-vision deficiency, contrast). The lowest contrast against a surface is 3.61:1. Gold is not a series colour because it cannot pass the dark lightness band.
+
+Not checked: screen-reader output, reduced motion with the real OS setting (the radar never animates), and the unverified mark on this page (every compare row is verified).
+
+Decisions:
+- `/compare` is server-rendered on demand (dynamic), so a shared URL arrives with its content. It is the only page that is not static.
+- A selection change pushes a history entry, so Back steps through choices instead of leaving the page.
+- The radar is scaled per axis to the higher of the two players and is hidden from screen readers; the bars carry every value. A measure with no recorded value is dropped from the radar and named in the summary.
+- Highest score, ducks, fours and sixes are not compared.
+- A code review after the build led to ten fixes, including the light-theme orange (it was under 3:1 contrast) and a rounded bar corner.
 
 ## Unverified numbers
 

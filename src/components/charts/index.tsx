@@ -3,6 +3,7 @@
 import { useInView } from "motion/react";
 import dynamic from "next/dynamic";
 import { useRef } from "react";
+import type { RadarAxis } from "@/lib/compare";
 import type { RateMark, RatePoint } from "./innings-chart";
 import type { YearPoint } from "./year-charts";
 
@@ -20,6 +21,19 @@ export function YearCharts(props: { data: YearPoint[]; careerAverage: number | n
     // Height matches the two charts inside, so nothing jumps when they load.
     <div ref={ref} className="min-h-[38rem]">
       {inView && <YearChartsImpl {...props} />}
+    </div>
+  );
+}
+
+const CompareRadarImpl = dynamic(() => import("./compare-radar").then((m) => m.CompareRadar), { ssr: false });
+
+/** Radar for the compare page, loaded the same way. */
+export function CompareRadar(props: { axes: RadarAxis[]; nameA: string; nameB: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "200px" });
+  return (
+    <div ref={ref} className="min-h-80">
+      {inView && <CompareRadarImpl {...props} />}
     </div>
   );
 }

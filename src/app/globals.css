@@ -31,6 +31,8 @@
 
   /* Brand. `score` is the highlight colour for numbers: gold on dark, deep green on light. */
   --color-score: var(--score);
+  --color-compare-a: var(--compare-a);
+  --color-compare-b: var(--compare-b);
   --color-aus-green: #00843d;
   --color-aus-gold: #ffcd00;
   --color-ink: #0a120e;
@@ -71,6 +73,9 @@
   --chart-3: #0e1a14;
   --chart-4: #2f6f9f;
   --chart-5: #b3261e;
+  /* Compare page: two players. Blue and orange, validated on both --background and --card in each theme (3:1 or better). */
+  --compare-a: #2a78d6;
+  --compare-b: #d4561f;
   --radius: 0.125rem;
 }
 
@@ -100,6 +105,8 @@
   --chart-3: #f1eee4;
   --chart-4: #6aa9ff;
   --chart-5: #ff6b5e;
+  --compare-a: #3987e5;
+  --compare-b: #d95926;
 }
 
 @layer base {
