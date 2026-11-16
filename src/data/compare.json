@@ -1,5 +1,5 @@
 {
-  "retrieved": "2026-11-12",
+  "retrieved": "2026-11-13",
   "players": [
     {
       "id": "ponting",
@@ -264,17 +264,17 @@
         {
           "format": "odi",
           "span": "2008-2026",
-          "matches": 320,
-          "innings": 307,
+          "matches": 321,
+          "innings": 308,
           "notOuts": 48,
           "runs": 15190,
           "highestScore": "183",
-          "average": 58.64,
-          "ballsFaced": 16069,
-          "strikeRate": 94.52,
+          "average": 58.42,
+          "ballsFaced": 16073,
+          "strikeRate": 94.5,
           "hundreds": 55,
           "fifties": 80,
-          "ducks": 19,
+          "ducks": 20,
           "fours": 1416,
           "sixes": 182,
           "source": "https://stats.espncricinfo.com/ci/engine/player/253802.html?class=2;template=results;type=batting",

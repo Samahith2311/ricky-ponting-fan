@@ -1,12 +1,13 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { CareerTimeline } from "@/components/career-timeline";
+import { JsonLd } from "@/components/json-ld";
 import { ScoreboardCounter } from "@/components/scoreboard-counter";
 import { SectionHeading } from "@/components/section-heading";
 import { StatCard } from "@/components/stat-card";
 import { Button } from "@/components/ui/button";
 import { formatDate, formats, international, retrieved, timeline, worldCupWins } from "@/lib/data";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 
 const board = [
   { label: "Intl runs", value: international.runs },
@@ -22,6 +23,15 @@ export default function Home() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@type": "WebSite",
+          name: site.name,
+          url: siteUrl,
+          description: site.description,
+          about: { "@type": "Person", name: site.subject, alternateName: site.nickname, sameAs: site.sameAs },
+        }}
+      />
       <section className="outfield border-b border-border">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 pt-10 pb-12 sm:px-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end lg:gap-14 lg:py-20">
           <div className="@container">

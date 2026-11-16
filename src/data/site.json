@@ -35,13 +35,30 @@
     "timeline": {
       "title": "Career timeline",
       "lead": "From a Tasmanian teenager to the coaching box, event by event."
+    },
+    "stats": {
+      "title": "Questions",
+      "lead": "Straight answers to the questions fans ask most: how he batted against each opponent, and how his teams fared with him as captain. Every answer is built from the same sourced figures as the rest of the site.",
+      "opponentHeading": "{surname} v {opponent}",
+      "opponentQuestion": "How did {subject} bat against {opponent}?",
+      "captainHeading": "{surname} as captain",
+      "captainQuestion": "What was {subject}'s record as {country}'s captain?",
+      "byFormat": "By format",
+      "captaincyLink": "The full captaincy page",
+      "more": "More questions"
+    },
+    "offline": {
+      "title": "Offline",
+      "lead": "You are offline, and this page has not been saved on this device yet. Pages you have already opened still work. Reconnect and try again."
     }
   },
+  "sameAs": ["https://en.wikipedia.org/wiki/Ricky_Ponting", "https://www.espncricinfo.com/cricketers/ricky-ponting-7133"],
   "explore": [
     { "href": "/captaincy", "title": "Captaincy", "text": "Captain against player, the World Cups, the Ashes won and lost." },
     { "href": "/records", "title": "Records", "text": "Records, ICC awards and the Hall of Fame." },
     { "href": "/innings", "title": "Innings replay", "text": "The World Cup final hundred, played back with the scoreboard running." },
     { "href": "/compare", "title": "Compare", "text": "Ponting beside Tendulkar, Kallis, Lara and Kohli, format by format." },
-    { "href": "/timeline", "title": "Timeline", "text": "From a Tasmanian teenager to the coaching box." }
+    { "href": "/timeline", "title": "Timeline", "text": "From a Tasmanian teenager to the coaching box." },
+    { "href": "/stats", "title": "Questions", "text": "How he batted against each opponent, and his record as captain." }
   ]
 }

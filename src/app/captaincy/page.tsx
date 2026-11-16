@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
+import { CaptainRecord } from "@/components/captain-record";
 import { CaptainToggle } from "@/components/captain-toggle";
 import { ResultsBar } from "@/components/results-bar";
 import { SectionHeading } from "@/components/section-heading";
 import { StatCard } from "@/components/stat-card";
 import { isVerified, TournamentTable } from "@/components/tournament-table";
 import { UnverifiedMark, UnverifiedNote } from "@/components/unverified-mark";
-import { captaincyData as data, formatDate, formats } from "@/lib/data";
+import { captaincyData as data, formatDate } from "@/lib/data";
 import { site } from "@/lib/site";
-import type { TeamResults } from "@/lib/types";
+import { formatLabel } from "@/lib/stats-pages";
 import { fixed } from "@/lib/utils";
 
 const copy = site.pages.captaincy;
 
-const formatLabel = (id: string) => formats.find((f) => f.id === id)?.label ?? id;
-const winPercent = (r: TeamResults) => (r.matches === 0 ? "–" : `${((r.won / r.matches) * 100).toFixed(1)}%`);
 const subheading = "font-heading text-2xl leading-none font-extrabold uppercase";
 
 export const metadata: Metadata = {
@@ -46,23 +45,7 @@ export default function Page() {
         <h2 id="record-heading" className={`${subheading} mb-4`}>
           Record as captain
         </h2>
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {data.record.map((r) => (
-            <li key={r.format} className="flex flex-col gap-px border border-border bg-border">
-              <div className="flex items-baseline justify-between bg-card px-4 py-3">
-                <h3 className="font-heading text-3xl leading-none font-black uppercase">{formatLabel(r.format)}</h3>
-                <span className="font-heading text-lg font-bold text-muted-foreground">{r.span.replace("-", "–")}</span>
-              </div>
-              <dl className="grid grid-cols-2 gap-px">
-                <StatCard label="Matches" value={r.matches} />
-                <StatCard label="Win rate" value={winPercent(r)} />
-              </dl>
-              <div className="flex-1 bg-card p-4">
-                <ResultsBar results={r} />
-              </div>
-            </li>
-          ))}
-        </ul>
+        <CaptainRecord records={data.record} />
       </section>
 
       <section className="mt-16" aria-labelledby="toggle-heading">

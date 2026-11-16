@@ -1,4 +1,6 @@
-import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from "next";
 import { Big_Shoulders, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
@@ -29,7 +31,15 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  // "./" resolves against each page's own path, so every page names itself as canonical (no query string).
+  alternates: { canonical: "./" },
+  // Titles, descriptions and images are filled in per page from its metadata and its opengraph-image file.
+  openGraph: { type: "website", siteName: site.name, locale: "en_AU" },
+  twitter: { card: "summary_large_image" },
 };
+
+// --background of the dark theme: the browser bar matches the board.
+export const viewport: Viewport = { themeColor: "#0a120e" };
 
 export default function RootLayout({
   children,
@@ -60,6 +70,8 @@ export default function RootLayout({
           </main>
           <SiteFooter />
         </Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

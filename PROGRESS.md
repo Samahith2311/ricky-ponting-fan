@@ -13,9 +13,9 @@ Running log. Phases and "done when" checks are in `PLAN.md`.
 | 4 Innings replay | Done | `7d1d722` |
 | 5 Compare tool | Done | `32ab8e2` |
 | 6 Fan Zone with Supabase | Built (`ebdd6f7`), then **removed** at the owner's request | the commit after `46d74fe` |
-| 7 Launch polish | Not started | |
+| 7 Launch polish | Done | the commit after `c6c2a96` |
 
-**The removal is not pushed yet.** Everything up to `46d74fe` is on GitHub, and the live site still serves the Fan Zone until the removal commit is pushed. To update the live site:
+**Phase 7 is not pushed yet.** Everything up to `d9c2274` is on GitHub (the Fan Zone removal is live). `c6c2a96` and the Phase 7 commit exist only on this machine. To update the live site:
 
 ```powershell
 cd "C:\projectt\Ricky Pointing"
@@ -24,9 +24,8 @@ git push
 
 ### Next
 
-- Owner clean-up after the Fan Zone removal: push, delete the four Vercel variables, delete the Supabase project or its tables. Listed under Phase 6 below.
-- Phase 7, launch polish: includes a look at the homepage bundle. First Load JS is 250 kB (199 kB before Phase 3); the rise is Motion, pulled in by the homepage timeline.
-- Final handover: unverified list, launch checklist, Vercel env vars.
+- Every phase is built. What is left is the owner's launch checklist under "Final handover" at the end of this file: push, turn on Analytics and Speed Insights in Vercel, Search Console.
+- Not done, and not needed for launch: the homepage First Load JS is still 250 kB (Motion, pulled in by the timeline). Lighthouse mobile performance is 91 with it.
 
 ### To resume
 
@@ -38,7 +37,7 @@ Open this folder in Claude Code and say: `continue from PROGRESS.md`.
 - Do not rewrite project files with PowerShell `Get-Content` / `Set-Content`. It added a byte-order mark and broke the en dashes in `coaching.json`. Use the editor tools or Node.
 - A PowerShell here-string commit message must not contain double quotes.
 - Statsguru answers 503 when asked too fast. `scripts/build-data.mjs` waits and retries; a full `npm run data:build` takes about three minutes.
-- Kohli is still playing, so his rows in `compare.json` and `rankings.json` move. Run `npm run data:build` again before launch.
+- Kohli is still playing, so his rows in `compare.json` and `rankings.json` move. `npm run data:build` was last run on 2026-11-13; run it again whenever the figures should be refreshed.
 - The GateGuard hook denies the first write to a new file in each folder per turn. State the facts it asks for and retry.
 - To add an innings: download the Cricsheet archive that holds the match into a folder outside the repo, then run `node scripts/build-innings.mjs <path to the match .json>`. The script checks the ball data against Statsguru and writes nothing on a mismatch. No component change is needed.
 - Port 3000 can be held by another project on this machine (`C:\projectt\CamPus_security\web`). Run this site on another port: `npm run dev -- -p 3100`.
@@ -189,6 +188,62 @@ Left for the owner (nothing breaks if these wait):
 - Supabase: delete the project, or drop the six tables and two functions.
 - `.env.local`: remove the same four lines. Only `NEXT_PUBLIC_SITE_URL` is used.
 - `CLAUDE.md` still names Supabase in the stack line, the process line and two conventions.
+
+## Phase 7 — Launch polish (2026-11-13)
+
+Done:
+- Metadata: every page has its own title, description and canonical link. The root layout adds Open Graph and Twitter card fields; pages fill in the rest.
+- Share cards: one `opengraph-image.tsx` per route, all drawn by `src/lib/og.tsx` with next/og and prerendered at build. The night board, Big Shoulders (`src/assets/BigShoulders-ExtraBold.ttf`, Open Font License), numbers read from the data files.
+- `/sitemap.xml` (31 URLs), `/robots.txt`, JSON-LD (`WebSite` with the person on the homepage, `FAQPage` on each question page).
+- Question pages: `/stats` and 19 pages under `/stats/[slug]`, built by `src/lib/stats-pages.ts`: one per international opponent (`/stats/ponting-vs-india` and so on) and `/stats/ponting-captain-record`. Every sentence is generated from the data files at build time. The build fails if two pages would share a slug.
+- Share button: a WhatsApp link that works without JavaScript; where the device has a share sheet the click opens that instead. On the innings replay and the question pages.
+- PWA: `manifest.webmanifest`, 192 and 512 pixel icons, Apple touch icon, and a hand-written service worker (`public/sw.js`). Pages already opened work offline; any other page shows `/offline`.
+- Vercel Analytics and Speed Insights components in the root layout.
+- Data rebuilt from Statsguru (`npm run data:build`). Only the retrieved dates and Kohli's ODI row moved.
+
+Checks: build pass, lint pass, `tsc` pass, check:data pass (14 files, 0 unverified). In the production build:
+- Every route answers 200 with its own title, description, canonical and `og:image`; unknown slugs and their cards are 404. Share cards looked at for the homepage, a format, a plain page, the innings and two question pages.
+- All 19 generated answers read through against the data: plurals, single-year spans, "without being dismissed", "did not reach fifty", win rates.
+- Offline: with the server stopped, a page opened earlier loaded from the cache and a page never opened showed the styled offline page.
+- Keyboard: the skip link is the first stop, no positive tabindex, every stop shows a focus style, the format tabs move with the arrow keys, the replay scrubber and Play work from the keyboard.
+- No horizontal scroll at 360px on a question page; heading order h1, h2, h3.
+- Lighthouse 12, mobile, local production build: homepage 91 performance, 100 accessibility, 96 best practices, 100 SEO; `/test` 95, 100, 96, 100. The only failed audit is two 404s for the Vercel scripts, which exist only on Vercel.
+
+Not checked:
+- JSON-LD in an outside validator (validator.schema.org, Google Rich Results Test). It was checked by reading the output.
+- Installing the site as an app on a real phone, and the native share sheet.
+- Reduced motion with the real OS setting, and screen-reader output. The reduced-motion CSS rule is present.
+- Lighthouse against the deployed site.
+
+Decisions:
+- No PWA library. The service worker is about 50 lines: network first for pages, cache first for build files. Its cache is never pruned; bump `CACHE` in `public/sw.js` to clear it.
+- Share cards use one font weight and the dark board in both themes.
+- The share link no longer copies the address to the clipboard. Browsers without a share sheet get "Share on WhatsApp".
+- A code review after the build (Sonnet) found no high-severity issue. Fixed from it: an empty `NEXT_PUBLIC_SITE_URL` now counts as unset, the service worker refuses to store an error page as the offline page, cards for unknown slugs are 404, the share link names WhatsApp when that is where it goes, and "each country" became "each opponent" (the list includes two World XIs).
+
+## Final handover (2026-11-13)
+
+### (a) Unverified numbers
+
+None. `npm run check:data` reports 14 files and 0 unverified entries. Every figure was parsed by script from the page named in its `source`.
+
+### (b) Launch checklist
+
+1. Push: `git push`. Vercel deploys from `main`.
+2. Vercel dashboard: turn on **Web Analytics** and **Speed Insights** for the project. Until then their two scripts answer 404 and nothing is recorded.
+3. Vercel dashboard: delete `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` and `FAN_ZONE_HASH_SECRET` if they are still there.
+4. Domain (optional): add it under Project, Settings, Domains. The site picks the production domain up by itself.
+5. After the deploy, open one page's share card (`/opengraph-image`, `/stats/ponting-vs-india/opengraph-image`) and paste a link into WhatsApp to see the preview.
+6. Google Search Console: add the site, verify it (the DNS record method needs no code change), then submit `https://<your domain>/sitemap.xml`. Bing Webmaster Tools takes the same sitemap.
+7. Paste the homepage and one question page into validator.schema.org.
+8. Where to post (suggestions): cricket communities that allow fan projects, such as r/Cricket (read its self-promotion rule first), cricket groups on Facebook and WhatsApp, and X with the innings replay or a question page as the link. Say it is an unofficial fan site.
+9. Keeping it current: Kohli is still playing, so his rows move. Run `npm run data:build`, then `npm run build`, commit and push.
+
+### (c) Environment variables for Vercel
+
+None are required.
+
+- `NEXT_PUBLIC_SITE_URL` is optional. Leave it unset and the site uses Vercel's production domain. If it is set, it must be the full public address starting with `https://`; never `http://localhost:3000`, or every share link and the sitemap will point at localhost.
 
 ## Unverified numbers
 

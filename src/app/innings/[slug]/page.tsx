@@ -8,7 +8,7 @@ import { UnverifiedMark, UnverifiedNote } from "@/components/unverified-mark";
 import { formatDate } from "@/lib/data";
 import { allInnings, findInnings } from "@/lib/innings";
 import { keyMoments, scoreText } from "@/lib/innings-math";
-import { site } from "@/lib/site";
+import { site, siteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -55,7 +55,7 @@ export default async function Page({ params }: Props) {
             )}
           </>
         }
-        action={<ShareButton title={`${i.title}: ${site.subject} replay`} />}
+        action={<ShareButton title={`${i.title}: ${site.subject} replay`} url={`${siteUrl}/innings/${i.id}`} />}
       />
 
       <InningsPlayer
